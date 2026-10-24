@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --mortafy-navy: #130936;
+  --mortafy-purple: #a82ffc;
+  --mortafy-card-left: #c2d1d4;
+  --mortafy-sheet-white: #f4f7f8;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: linear-gradient(135deg, #b9a7c9 0%, #b4a0c8 50%, #9882b0 100%);
+  color: #130936;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Safe-Area Insets for iPhone Notch / Dynamic Island & Home Indicator */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-bottom-cta {
+  margin-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Custom Range Input Reset for Touch Ergonomics */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 44px;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.22s ease-out forwards;
+}
+
+/* Professional Print & PDF Export Styling */
+@media print {
+  @page {
+    size: auto;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt;
+  }
+
+  /* Hide header navigation, background organic blobs, interactive sliders, and non-print UI */
+  header,
+  nav,
+  main,
+  footer,
+  .no-print,
+  input[type="range"] {
+    display: none !important;
+  }
+
+  /* Ensure the Amortization Report Modal renders as a clean full-page white document */
+  .mortafy-print-root {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .mortafy-print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .mortafy-print-table th,
+  .mortafy-print-table td {
+    border-bottom: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    padding: 6px 8px !important;
+  }
+
+  .mortafy-print-table tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
